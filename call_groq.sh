@@ -6,7 +6,7 @@ sendrequest() {
     -X POST \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $API_KEY" \
-    -d "{\"messages\": [{\"role\": \"user\", \"content\": \"$1\"}], \"model\": \"llama-3.3-70b-versatile\", \"temperature\": 1, \"max_tokens\": 1024, \"top_p\": 1, \"stream\": true, \"stop\": null}" | python3 /home/myubuntu/bin/resFormatter.py
+    -d "{\"messages\": [{\"role\": \"user\", \"content\": \"$1\"}], \"model\": \"llama-3.3-70b-versatile\", \"temperature\": 1, \"max_tokens\": 1024, \"top_p\": 1, \"stream\": true, \"stop\": null}" | python3 $HOME/bin/resFormatter.py
 }
 
 interactivemode() {
