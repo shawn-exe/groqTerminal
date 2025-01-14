@@ -1,5 +1,6 @@
 source .env
 
+trap 'echo " "; exit' INT
 sendrequest() {
     curl -s "https://api.groq.com/openai/v1/chat/completions" \
     -X POST \
@@ -14,7 +15,7 @@ interactivemode() {
         read -r USER_INPUT
         USER_INPUT=$(echo "$USER_INPUT" | sed 's/"/\\"/g' | sed ':a;N;$!ba;s/\n/\\n/g')
         sendrequest "$USER_INPUT"
-        echo  "     "
+        echo  " "
     done
 }
 
@@ -22,7 +23,7 @@ if [ "$1" = "-c" ]; then
     interactivemode
 else
     if [ -z "$*" ]; then
-        echo "Usage: groq Enter your question.."
+        echo "usage: groq Enter your question.."
         echo "groq -c for interactive mode.."
         exit 1
     fi
